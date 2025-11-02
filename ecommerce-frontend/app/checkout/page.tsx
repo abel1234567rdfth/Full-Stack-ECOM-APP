@@ -5,7 +5,7 @@ import { useCartStore } from "@/store/cart-store";
 import React from "react";
 
 export default function page() {
-  const { items, removeItem, addItem } = useCartStore();
+  const { items, removeItem, addItem, clearCart } = useCartStore();
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -62,13 +62,17 @@ export default function page() {
           </ul>
 
           <div className="mt-4 border-t pt-2 text-lg font-semibold">
-            Total:${total.toFixed(2)}.
+            Total:${total.toFixed(2)}
           </div>
         </CardContent>
       </Card>
-      <form action="" className="max-w-md mx-auto">
+      <form action="" className="max-w-md mx-auto flex justify-between">
         <Button type="submit" variant={"default"}>
           Proceed To Payment
+        </Button>
+
+        <Button type="submit" onClick={() => clearCart()} variant={"default"}>
+          Clear Cart
         </Button>
       </form>
     </div>

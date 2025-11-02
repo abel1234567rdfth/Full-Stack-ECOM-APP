@@ -24,11 +24,12 @@ export interface Product {
   createdAt: Date;
   updatedAt: Date;
   image: string;
+  id: string;
 }
 
 export default function ProductCard({ product }: ProductProps) {
   return (
-    <Link href={"/products/1"} className="block h-full">
+    <Link href={`/products/${product.id}`} className="block h-full">
       <Card className="group hover:shadow-2xl transition duration-300 py-0 h-full flex flex-col border-gray-300 gap-0">
         {product.image && (
           <div className="relative h-60 w-full">

@@ -18,6 +18,7 @@ export const dummyProducts = [
     createdAt: new Date(),
     updatedAt: new Date(),
     image: "/product demo.webp",
+    id: "1",
   },
   {
     Name: "Smart Watch",
@@ -33,6 +34,7 @@ export const dummyProducts = [
     createdAt: new Date(),
     updatedAt: new Date(),
     image: "/product banner.jpg",
+    id: "2",
   },
   {
     Name: "Gaming Laptop",
@@ -47,6 +49,7 @@ export const dummyProducts = [
     createdAt: new Date(),
     updatedAt: new Date(),
     image: "/product demo.webp",
+    id: "3",
   },
   {
     Name: "Bluetooth Speaker",
@@ -61,6 +64,7 @@ export const dummyProducts = [
     createdAt: new Date(),
     updatedAt: new Date(),
     image: "/product banner.jpg",
+    id: "4",
   },
   {
     Name: "DSLR Camera",
@@ -75,6 +79,7 @@ export const dummyProducts = [
     createdAt: new Date(),
     updatedAt: new Date(),
     image: "/product demo.webp",
+    id: "5",
   },
   {
     Name: "Bluetooth Speaker",
@@ -89,6 +94,7 @@ export const dummyProducts = [
     createdAt: new Date(),
     updatedAt: new Date(),
     image: "/product banner.jpg",
+    id: "6",
   },
 ];
 

@@ -1,3 +1,4 @@
+import Navbar from "@/Components/Navbar";
 import ProductDetail from "@/Components/ProductDetail";
 import React from "react";
 
@@ -28,5 +29,10 @@ export default async function Page({
     id,
   };
 
-  return <ProductDetail product={dummyProduct} />;
+  return (
+    <div className="flex flex-col">
+      <Navbar />
+      <ProductDetail product={dummyProduct} />
+    </div>
+  );
 }

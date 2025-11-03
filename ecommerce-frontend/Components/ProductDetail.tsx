@@ -42,7 +42,7 @@ export default function ProductDetail({ product }: SingleProduct) {
     });
   };
   return (
-    <div className="max-w-[80%] mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 items-center">
+    <div className="max-w-[80%] mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 items-center grow">
       {product.image && (
         <div className="relative h-96  w-full md:w-1/2 rounded-lg overflow-hidden">
           <Image

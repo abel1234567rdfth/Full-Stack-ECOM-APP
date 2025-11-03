@@ -22,7 +22,7 @@ export default function page() {
   return (
     <div className="flex flex-col">
       <Navbar />
-      <div className="max-w-[80%] mx-auto px-4 py-8 grow">
+      <div className="mt-4  grow container max-w-[85%] mx-auto px-4 py-1">
         <h1 className="text-3xl font-bold mb-8 text-center">Checkout</h1>
         <Card className="max-w-md mx-auto mb-8">
           <CardHeader>

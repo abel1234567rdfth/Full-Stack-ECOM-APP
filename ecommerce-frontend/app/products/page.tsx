@@ -7,7 +7,7 @@ export default function ProductsPage() {
   return (
     <div className="flex flex-col">
       <Navbar />
-      <div className="grow">
+      <div className="mt-4  grow container max-w-[85%] mx-auto px-4 py-1">
         <h1 className="text-3xl font-bold leading-none tracking-tight text-foreground text-center mb-8 ">
           All Products
         </h1>

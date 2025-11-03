@@ -10,7 +10,6 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Ghost } from "lucide-react";
-import { useNavStore } from "@/store/nav-store";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -26,11 +25,9 @@ export default function Navbar() {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  const { navopen } = useNavStore();
+
   return (
-    <nav
-      className={`${!navopen && "hidden"} sticky top-0 z-50 bg-white shadow`}
-    >
+    <nav className={` sticky top-0 z-50 bg-white shadow`}>
       <div className="max-w-[85%] mx-auto flex items-center justify-between px-4 py-4">
         <Link href={"/"} className="hover:text-blue-600 font-bold">
           Ecom

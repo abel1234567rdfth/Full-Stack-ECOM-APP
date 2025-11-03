@@ -101,9 +101,9 @@ export const dummyProducts = [
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col">
       <Navbar />
-      <div>
+      <div className="mt-4  grow container max-w-[85%] mx-auto px-4 py-1">
         <section className="rounded bg-neutral-100 py-8 sm:py-12">
           <div className="mx-auto grid grid-cols-1 items-center justify-items-center gap-8 px-8 sm:px-16 md:grid-cols-2">
             <div className="max-w-md space-y-4">

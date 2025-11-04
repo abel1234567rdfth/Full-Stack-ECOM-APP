@@ -53,6 +53,19 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
+      <div className="flex justify-between items-center mb-4 px-7">
+        <div className="flex items-center py-4">
+          <Input
+            placeholder="Filter Name..."
+            value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+            onChange={(event) =>
+              table.getColumn("name")?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm border-gray-200 placeholder:text-black/20 "
+          />
+        </div>
+      </div>
+
       <div className="overflow-hidden rounded-sm border">
         <Table>
           <TableHeader>

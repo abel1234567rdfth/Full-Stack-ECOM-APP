@@ -33,7 +33,7 @@ const items = [
   },
   {
     title: "Transactions",
-    url: "/Admin/Transactions",
+    url: "/Admin/Payments",
     icon: CheckCircle,
   },
   {

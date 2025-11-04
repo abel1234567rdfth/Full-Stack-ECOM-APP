@@ -16,7 +16,9 @@ import {
 export type Transactions = {
   id: string;
   quantity: number;
-  price: number;
+  total_price: number;
+  name: string;
+  status: "pending" | "failed" | "completed";
 };
 
 export const columns: ColumnDef<Transactions>[] = [
@@ -25,14 +27,29 @@ export const columns: ColumnDef<Transactions>[] = [
     header: "Id",
   },
   {
-    accessorKey: "price",
+    accessorKey: "name",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Price
+          Name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+  },
+
+  {
+    accessorKey: "total_price",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Total
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -51,6 +68,10 @@ export const columns: ColumnDef<Transactions>[] = [
         </Button>
       );
     },
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
   },
 
   {

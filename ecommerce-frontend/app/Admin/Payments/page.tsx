@@ -10,33 +10,45 @@ async function getData(): Promise<Transactions[]> {
   return [
     {
       id: "728ed52f",
-      price: 50,
+      total_price: 50,
       quantity: 100,
+      name: "abel4",
+      status: "failed",
     },
     {
       id: "728ed52f",
-      price: 60,
+      total_price: 60,
       quantity: 100,
+      name: "abel5",
+      status: "pending",
     },
     {
       id: "728ed52f",
-      price: 500,
+      total_price: 500,
       quantity: 100,
+      name: "abel6",
+      status: "completed",
     },
     {
       id: "728ed52f",
-      price: 78,
+      total_price: 78,
       quantity: 100,
+      name: "abel7",
+      status: "pending",
     },
     {
       id: "728ed52f",
-      price: 90,
+      total_price: 90,
       quantity: 100,
+      name: "abel8",
+      status: "pending",
     },
     {
       id: "728ed52f",
-      price: 20,
+      total_price: 20,
       quantity: 100,
+      name: "abel9",
+      status: "failed",
     },
 
     // ...

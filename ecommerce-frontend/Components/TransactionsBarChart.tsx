@@ -12,26 +12,26 @@ import {
 } from "./ui/chart";
 
 const chartData = [
-  { month: "January", desktop: 40, mobile: 80 },
-  { month: "February", desktop: 30, mobile: 20 },
-  { month: "March", desktop: 90, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
+  { month: "January", desktop: 140, mobile: 80 },
+  { month: "February", desktop: 300, mobile: 200 },
+  { month: "March", desktop: 88, mobile: 120 },
+  { month: "April", desktop: 40, mobile: 190 },
   { month: "May", desktop: 70, mobile: 130 },
-  { month: "June", desktop: 44, mobile: 70 },
+  { month: "June", desktop: 90, mobile: 70 },
 ];
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Foreign",
     color: "#067",
   },
   mobile: {
-    label: "Mobile",
+    label: "Local",
     color: "#e6e6e6",
   },
 } satisfies ChartConfig;
 
-export function UserBarChartComponent() {
+export function TransactionsBarChartComponent() {
   return (
     <ChartContainer config={chartConfig} className="h-[400px] w-[50%]">
       <BarChart accessibilityLayer data={chartData}>

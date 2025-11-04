@@ -23,17 +23,17 @@ import {
 const items = [
   {
     title: "Users",
-    url: "/",
+    url: "/Admin/Users",
     icon: PersonStandingIcon,
   },
   {
     title: "Products",
-    url: "#",
+    url: "/Admin/Products",
     icon: PenBoxIcon,
   },
   {
     title: "Transactions",
-    url: "#",
+    url: "/Admin/Transactions",
     icon: CheckCircle,
   },
   {

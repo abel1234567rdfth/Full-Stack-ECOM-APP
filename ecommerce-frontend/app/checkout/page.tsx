@@ -1,11 +1,13 @@
 "use client";
+import { ShippingAddressModal } from "@/Components/infoModal";
 import Navbar from "@/Components/Navbar";
 import { Button } from "@/Components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/Components/ui/card";
 import { useCartStore } from "@/store/cart-store";
-import React from "react";
+import React, { useState } from "react";
 
 export default function page() {
+  const [addressOpen, setAddressOpen] = useState(false);
   const { items, removeItem, addItem, clearCart } = useCartStore();
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -41,7 +43,34 @@ export default function page() {
 
                   <div className="flex items-center gap-2">
                     <Button
-                      onClick={() => removeItem(item.id)}
+                      onClick={async () => {
+                        removeItem(item.id);
+                        try {
+                          const res = await fetch(
+                            `${process.env.NEXT_PUBLIC_BASE_URL}/cart/addtocart`,
+                            {
+                              method: "POST",
+                              credentials: "include",
+                              headers: {
+                                "Content-Type": "application/json",
+                              },
+                              body: JSON.stringify({
+                                productId: item.id,
+                                action: "decrement",
+                              }),
+                            }
+                          );
+
+                          const data = await res.json();
+                          console.log("API response:", data);
+
+                          if (!res.ok) {
+                            console.error("Failed to add to cart:", data);
+                          }
+                        } catch (error) {
+                          console.error("Error adding to cart:", error);
+                        }
+                      }}
                       size="sm"
                       variant={"outline"}
                     >
@@ -52,11 +81,38 @@ export default function page() {
                     </span>
                     <Button
                       size="sm"
-                      onClick={() => {
+                      onClick={async () => {
                         addItem({
                           ...item,
                           quantity: 1,
                         });
+
+                        try {
+                          // 2. Add to backend
+                          const res = await fetch(
+                            `${process.env.NEXT_PUBLIC_BASE_URL}/cart/addtocart`,
+                            {
+                              method: "POST",
+                              credentials: "include",
+                              headers: {
+                                "Content-Type": "application/json",
+                              },
+                              body: JSON.stringify({
+                                productId: item.id,
+                                action: "increment",
+                              }),
+                            }
+                          );
+
+                          const data = await res.json();
+                          console.log("API response:", data);
+
+                          if (!res.ok) {
+                            console.error("Failed to add to cart:", data);
+                          }
+                        } catch (error) {
+                          console.error("Error adding to cart:", error);
+                        }
                       }}
                     >
                       +
@@ -72,13 +128,18 @@ export default function page() {
           </CardContent>
         </Card>
         <form action="" className="max-w-md mx-auto flex justify-between">
-          <Button type="submit" variant={"default"}>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              setAddressOpen(!addressOpen);
+            }}
+            className="mx-auto"
+            variant={"default"}
+          >
             Proceed To Payment
           </Button>
 
-          <Button type="submit" onClick={() => clearCart()} variant={"default"}>
-            Clear Cart
-          </Button>
+          <ShippingAddressModal open={addressOpen} setOpen={setAddressOpen} />
         </form>
       </div>
     </div>

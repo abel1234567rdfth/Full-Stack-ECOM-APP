@@ -53,7 +53,7 @@ export default function ProductDetail({ product }: SingleProduct) {
           },
           body: JSON.stringify({
             productId: product._id,
-            quantity: 1,
+            action: "increment",
           }),
         }
       );
@@ -92,7 +92,37 @@ export default function ProductDetail({ product }: SingleProduct) {
         )}
 
         <div className="flex space-x-4 items-center mt-3">
-          <Button onClick={() => removeItem(product._id)} variant={"outline"}>
+          <Button
+            onClick={async () => {
+              removeItem(product._id);
+              try {
+                const res = await fetch(
+                  `${process.env.NEXT_PUBLIC_BASE_URL}/cart/addtocart`,
+                  {
+                    method: "POST",
+                    credentials: "include",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      productId: product._id,
+                      action: "decrement",
+                    }),
+                  }
+                );
+
+                const data = await res.json();
+                console.log("API response:", data);
+
+                if (!res.ok) {
+                  console.error("Failed to add to cart:", data);
+                }
+              } catch (error) {
+                console.error("Error adding to cart:", error);
+              }
+            }}
+            variant={"outline"}
+          >
             -
           </Button>
           <span className="text-lg font-semibold">{quantity}</span>

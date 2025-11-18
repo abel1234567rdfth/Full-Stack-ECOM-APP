@@ -6,12 +6,20 @@ import Navbar from "@/Components/Navbar";
 import { Button } from "@/Components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { useUser } from "@/store/user-store";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { userId, role } = useUser();
+  console.log(userId, role);
 
   useEffect(() => {
+    if (userId === "") {
+      router.push("/");
+    }
     const fetchProducts = async () => {
       try {
         const res = await fetch(

@@ -6,9 +6,11 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useUser } from "@/store/user-store";
 
 export default function SignIn() {
   const router = useRouter();
+  const { setUserId, setRole } = useUser();
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -38,6 +40,8 @@ export default function SignIn() {
       );
 
       const data = await res.json();
+      setUserId(data.user._id);
+      setRole(data.user.role);
 
       if (!res.ok) throw new Error(data.message || "Signup failed");
       if (data.user.role === "admin" && isAdmin) {

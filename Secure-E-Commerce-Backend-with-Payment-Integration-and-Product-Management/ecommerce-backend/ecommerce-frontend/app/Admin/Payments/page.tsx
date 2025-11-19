@@ -1,0 +1,74 @@
+import { columns, Transactions } from "./columns";
+import { DataTable } from "./data-table";
+import { UserPieChart } from "@/Components/UserPieChart";
+import { ProductBarChartComponent } from "@/Components/ProductBarChart";
+import { ProductPieChart } from "@/Components/ProductPieChart";
+import { TransactionsBarChartComponent } from "@/Components/TransactionsBarChart";
+import { TransactionsPieChart } from "@/Components/TransactionsPieChart";
+
+async function getData(): Promise<Transactions[]> {
+  // Fetch data from your API here.
+  return [
+    {
+      id: "728ed52f",
+      total_price: 50,
+      quantity: 100,
+      name: "abel4",
+      status: "Failed",
+    },
+    {
+      id: "728ed52f",
+      total_price: 60,
+      quantity: 100,
+      name: "abel5",
+      status: "Pending",
+    },
+    {
+      id: "728ed52f",
+      total_price: 500,
+      quantity: 100,
+      name: "abel6",
+      status: "Completed",
+    },
+    {
+      id: "728ed52f",
+      total_price: 78,
+      quantity: 100,
+      name: "abel7",
+      status: "Pending",
+    },
+    {
+      id: "728ed52f",
+      total_price: 90,
+      quantity: 100,
+      name: "abel8",
+      status: "Pending",
+    },
+    {
+      id: "728ed52f",
+      total_price: 20,
+      quantity: 100,
+      name: "abel9",
+      status: "Failed",
+    },
+
+    // ...
+  ];
+}
+
+export default async function DemoPage() {
+  const data = await getData();
+
+  return (
+    <div>
+      <div className="flex flex-col md:flex-row items-center space-x-4">
+        <TransactionsPieChart />
+        <TransactionsBarChartComponent />
+      </div>
+
+      <div className="container mx-auto py-10">
+        <DataTable columns={columns} data={data} />
+      </div>
+    </div>
+  );
+}
